@@ -53,7 +53,8 @@ client = OpenAI(api_key=api_key)
 MODEL = "gpt-5"  # keep as-is
  
 # Where prompt files live (you can change this or make it configurable)
-PROMPT_DIR = Path(__file__).parent / "prompts"
+#PROMPT_DIR = Path(__file__).parent / "prompts"
+PROMPT_DIR = Path(__file__).parent
 PROMPT_FILES = {
     "Default (Base System)": "base_system.md",
     "Partner Mode": "partner_mode.md",
@@ -324,4 +325,5 @@ if "messages" in st.session_state and st.session_state.messages:
             if message["role"] == "assistant":
                 render_assistant_blocks(message["content"])
             else:
+
                 st.markdown(message["content"])
