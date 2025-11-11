@@ -77,8 +77,9 @@ ENCODING = get_encoding(MODEL)
 @st.cache_data(show_spinner=False)
 def load_prompt_text(path_str: str) -> str:
     """
-    Read a prompt file from prompts/*.md. Cached to avoid disk churn on reruns.
-    If not found, return a minimal fallback with a visible warning in UI.
+    Read a prompt file from the same folder as this script.
+    If not found, also try a legacy 'prompts/' subfolder.
+    Cached to avoid disk churn on reruns.
     """
     if not path_str:
         return ""
@@ -327,3 +328,4 @@ if "messages" in st.session_state and st.session_state.messages:
             else:
 
                 st.markdown(message["content"])
+
